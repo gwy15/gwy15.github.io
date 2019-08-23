@@ -92,7 +92,8 @@ valine:
   verify: false # true/false:verify code
   avatar: mm # avatar style https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
   placeholder: 那你能帮帮我吗 # comment box placeholder
-
+  visitor: true
+  show_visitor: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
