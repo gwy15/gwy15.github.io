@@ -8,4 +8,4 @@ public/
 .deploy*/
 themes/
 
-_config.yml
+# _config.yml
