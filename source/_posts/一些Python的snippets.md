@@ -12,6 +12,7 @@ date: 2019-08-22 17:18:00
 
 ```Python
 from logging.handlers import TimedRotatingFileHandler
+
 handler = TimedRotatingFileHandler(
     logFileName, encoding='utf8',
     when='midnight', atTime=time(4, 0, 0), # generate backup file at 4 am
@@ -25,11 +26,9 @@ Python 库里面有一个 [`@functools.lru_cache(maxsize=128, typed=False)`](htt
 使用 [`cachetools`](https://cachetools.readthedocs.io/en/stable/) 包，该包里面实现了该功能。
 
 ```Python
-import time
 from cachetools import func as functools
 
 @functools.ttl_cache(maxsize=128, ttl=600)
 async def doSomething(args):
     pass
 ```
-
