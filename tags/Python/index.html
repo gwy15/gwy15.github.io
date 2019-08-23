@@ -450,7 +450,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   });
   new Valine({
     el: '#comments',
-    verify: false,
+    verify: true,
     notify: false,
     appId: 'Imx3e9nDSl2TaBDAaQef1zQc-gzGzoHsz',
     appKey: 'owxfYuvyRzdxXjrADJgWLJlW',
@@ -460,7 +460,8 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
     pageSize: '10' || 10,
     visitor: true,
     lang: '' || 'zh-cn',
-    path: location.pathname
+    path: location.pathname,
+    recordIP: true
   });
 }, window.Valine);
 </script>
