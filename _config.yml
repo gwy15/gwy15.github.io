@@ -7,9 +7,9 @@ title: 名字还没想好
 subtitle:
 description:
 keywords:
-author: gwy15, gwy15thu@gmail.com
+author: gwy15
 avatar: https://avatars2.githubusercontent.com/u/23229760?s=460&v=4
-language: zh-cn
+language: zh-CN
 timezone:
 
 # URL
@@ -80,7 +80,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: anatole
+theme: next
 
 # Anatole settings
 # Valine comments https://valine.js.org
