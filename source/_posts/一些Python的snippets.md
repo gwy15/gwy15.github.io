@@ -9,6 +9,7 @@ date: 2019-08-22 17:18:00
 ### log 以天为单位分文件保存
 
 以前我用的比较多的是 [`RotatingFileHandler`](https://docs.python.org/3.7/library/logging.handlers.html#rotatingfilehandler)，这个根据文件大小进行分割。有的时候我们对文件大小限制并不大，而对日期更敏感一点。这个时候可以用官方库里面的 [`TimedRotatingFileHandler`](https://docs.python.org/3.7/library/logging.handlers.html#timedrotatingfilehandler)。
+<!-- more -->
 
 ```Python
 from logging.handlers import TimedRotatingFileHandler
