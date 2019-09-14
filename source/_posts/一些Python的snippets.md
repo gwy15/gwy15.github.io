@@ -24,12 +24,20 @@ handler = TimedRotatingFileHandler(
 
 Python 库里面有一个 [`@functools.lru_cache(maxsize=128, typed=False)`](https://docs.python.org/3.7/library/functools.html#functools.lru_cache) 修饰器，可以缓存最近的`maxsize`个结果。但是有的时候需要修饰的函数并不是一个纯函数，譬如其可能请求一个列表；但是我们对它的结果的即时性要求不高，这个时候可以考虑使用一个缓存将其结果缓存一段时间，以减少调用该函数的时间。
 
-使用 [`cachetools`](https://cachetools.readthedocs.io/en/stable/) 包，该包里面实现了该功能。
+使用 [`cachetools`](https://cachetools.readthedocs.io/en/stable/) 包，该包里面实现了该功能。需要注意的是对于异步函数需要使用 `asyncache` 进行修饰。
 
 ```Python
 from cachetools import func as functools
 
 @functools.ttl_cache(maxsize=128, ttl=600)
-async def doSomething(args):
+def doSomething(args):
+    pass
+
+# async version
+from asyncache import cached
+from cachetools import TTLCache
+
+@cached(TTLCache(maxsize=128, ttl=600))
+async def asyncDoSomething(args):
     pass
 ```
