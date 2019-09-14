@@ -54,19 +54,20 @@
   };
 </script>
 
-  <meta name="description" content="Hexo 的 NexT 原来的主题是极简的黑白配色，一眼看上去还可以，但是看久了不免会有些视觉疲倦。如果想修改 hexo NexT 主题的配色应该怎么做呢？我在网上找到了一篇相关的文章。 这个文章中的修改方法的原理是修改.styl文件（Stylus语法）中的几个大的定义。按照这个方法虽然可以修改，但是会将其他部分的颜色也一起修改了，有没有更好的、更细粒度的方法呢？">
-<meta name="keywords" content="Hexo,css">
+  <meta name="description" content="对于一个想要长期在后台跑的服务，比如一个 web server，一般有这几种方法：  使用 nohup + &amp;amp; 做成一个 service，使用 sudo service &amp;lt;servicename&amp;gt; &amp;lt;command&amp;gt; 控制 自行实现 daemon 利用 screen 软件，放到一个 screen 里面跑  第一个方法实用性太差；第二个和第三个在能处理好日志时不错，但">
 <meta property="og:type" content="article">
-<meta property="og:title" content="修改Hexo NexT主题的配色">
-<meta property="og:url" content="https://blog.gwy15.com/2019/08/25/修改Hexo-NexT主题的配色/index.html">
+<meta property="og:title" content="service的替代：Supervisor——配置和坑">
+<meta property="og:url" content="https://blog.gwy15.com/2019/09/14/service的替代：Supervisor——配置和坑/index.html">
 <meta property="og:site_name" content="名字还没想好">
-<meta property="og:description" content="Hexo 的 NexT 原来的主题是极简的黑白配色，一眼看上去还可以，但是看久了不免会有些视觉疲倦。如果想修改 hexo NexT 主题的配色应该怎么做呢？我在网上找到了一篇相关的文章。 这个文章中的修改方法的原理是修改.styl文件（Stylus语法）中的几个大的定义。按照这个方法虽然可以修改，但是会将其他部分的颜色也一起修改了，有没有更好的、更细粒度的方法呢？">
+<meta property="og:description" content="对于一个想要长期在后台跑的服务，比如一个 web server，一般有这几种方法：  使用 nohup + &amp;amp; 做成一个 service，使用 sudo service &amp;lt;servicename&amp;gt; &amp;lt;command&amp;gt; 控制 自行实现 daemon 利用 screen 软件，放到一个 screen 里面跑  第一个方法实用性太差；第二个和第三个在能处理好日志时不错，但">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-25T04:38:02.020Z">
+<meta property="og:image" content="https://blog.gwy15.com/images/2019/09/supervisor.png">
+<meta property="og:updated_time" content="2019-09-14T14:34:56.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修改Hexo NexT主题的配色">
-<meta name="twitter:description" content="Hexo 的 NexT 原来的主题是极简的黑白配色，一眼看上去还可以，但是看久了不免会有些视觉疲倦。如果想修改 hexo NexT 主题的配色应该怎么做呢？我在网上找到了一篇相关的文章。 这个文章中的修改方法的原理是修改.styl文件（Stylus语法）中的几个大的定义。按照这个方法虽然可以修改，但是会将其他部分的颜色也一起修改了，有没有更好的、更细粒度的方法呢？">
-  <link rel="canonical" href="https://blog.gwy15.com/2019/08/25/修改Hexo-NexT主题的配色/">
+<meta name="twitter:title" content="service的替代：Supervisor——配置和坑">
+<meta name="twitter:description" content="对于一个想要长期在后台跑的服务，比如一个 web server，一般有这几种方法：  使用 nohup + &amp;amp; 做成一个 service，使用 sudo service &amp;lt;servicename&amp;gt; &amp;lt;command&amp;gt; 控制 自行实现 daemon 利用 screen 软件，放到一个 screen 里面跑  第一个方法实用性太差；第二个和第三个在能处理好日志时不错，但">
+<meta name="twitter:image" content="https://blog.gwy15.com/images/2019/09/supervisor.png">
+  <link rel="canonical" href="https://blog.gwy15.com/2019/09/14/service的替代：Supervisor——配置和坑/">
 
 
 <script id="page-configurations">
@@ -80,7 +81,7 @@
   };
 </script>
 
-  <title>修改Hexo NexT主题的配色 | 名字还没想好</title>
+  <title>service的替代：Supervisor——配置和坑 | 名字还没想好</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -201,7 +202,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.gwy15.com/2019/08/25/修改Hexo-NexT主题的配色/">
+    <link itemprop="mainEntityOfPage" href="https://blog.gwy15.com/2019/09/14/service的替代：Supervisor——配置和坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gwy15">
@@ -213,7 +214,7 @@
       <meta itemprop="name" content="名字还没想好">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">修改Hexo NexT主题的配色
+        <h1 class="post-title" itemprop="name headline">service的替代：Supervisor——配置和坑
 
           
         </h1>
@@ -229,29 +230,16 @@
                 
               
 
-              <time title="创建时间：2019-08-25 11:55:00 / 修改时间：12:38:02" itemprop="dateCreated datePublished" datetime="2019-08-25T11:55:00+08:00">2019-08-25</time>
+              <time title="创建时间：2019-09-14 21:32:40 / 修改时间：22:34:56" itemprop="dateCreated datePublished" datetime="2019-09-14T21:32:40+08:00">2019-09-14</time>
             </span>
           
             
 
             
           
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
-            <span id="/2019/08/25/修改Hexo-NexT主题的配色/" class="post-meta-item leancloud_visitors" data-flag-title="修改Hexo NexT主题的配色" title="阅读次数">
+            <span id="/2019/09/14/service的替代：Supervisor——配置和坑/" class="post-meta-item leancloud_visitors" data-flag-title="service的替代：Supervisor——配置和坑" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -269,7 +257,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/08/25/修改Hexo-NexT主题的配色/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/25/修改Hexo-NexT主题的配色/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/09/14/service的替代：Supervisor——配置和坑/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/14/service的替代：Supervisor——配置和坑/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -283,22 +271,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Hexo 的 NexT 原来的主题是极简的黑白配色，一眼看上去还可以，但是看久了不免会有些视觉疲倦。如果想修改 hexo NexT 主题的配色应该怎么做呢？我在网上找到了一篇<a href="https://i.zhouhuix.cn/2016/11/24/修改Hexo的Next主题/" target="_blank" rel="noopener">相关的文章</a>。</p>
-<p>这个文章中的修改方法的原理是修改<code>.styl</code>文件（Stylus语法）中的几个大的定义。按照这个方法虽然可以修改，但是会将其他部分的颜色也一起修改了，有没有更好的、更细粒度的方法呢？</p>
+        <p>对于一个想要长期在后台跑的服务，比如一个 web server，一般有这几种方法：</p>
+<ul>
+<li>使用 nohup + &amp;</li>
+<li>做成一个 service，使用 <code>sudo service &lt;servicename&gt; &lt;command&gt;</code> 控制</li>
+<li>自行实现 daemon</li>
+<li>利用 screen 软件，放到一个 screen 里面跑</li>
+</ul>
+<p>第一个方法实用性太差；第二个和第三个在能处理好日志时不错，但是其维护起来较为麻烦；最后一个方法是笔者以前常用的方法。</p>
+<p>supervisor 是用 python 编写的程序，其能够将非 daemon 程序放到后台运行并监控，还能做到检测到程序挂掉时重新拉起。它使用了 client/server 架构，因此提供了 web UI 以便远程控制（其实有坑）。</p>
+<p><img src="/images/2019/09/supervisor.png" alt="web UI"></p>
 <a id="more"></a>
 
-<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><p>Hexo 版本：3.9.0</p>
-<p>NexT 版本：7.3.0</p>
-<p>使用的 scheme: Pisces</p>
-<h3 id="修改站名部分的颜色"><a href="#修改站名部分的颜色" class="headerlink" title="修改站名部分的颜色"></a>修改站名部分的颜色</h3><p>站名部分就是那个大黑色方块，准确描述是 <code>div.site-meta</code>。显然其颜色经过计算之后是 <code>themes/next/source/css/_variables/base.styl</code> 文件中的 <code>$black-deep</code> 变量。但是直接修改该变量会使得下方的用户名也一起改变，因为其颜色也是定义的 <code>$black-deep</code> 变量，这不是我想要的效果。</p>
-<p>既然使用的是 <code>$black-deep</code> 变量，我们找到其传入的地方修改不就好了吗？</p>
-<p>在代码中查找 <code>$black-deep</code> 和 <code>.site-meta</code>，很快可以定位到相关定义，在 <code>themes/next/source/css/_schemes/Pieces/_brand.styl</code> 中，有对 <code>.site-meta</code> 的定义：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.site-meta</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: $black-deep;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  +tablet-mobile() &#123;</span><br><span class="line">    <span class="selector-tag">box-shadow</span>: 0 0 16<span class="selector-tag">px</span> <span class="selector-tag">rgba</span>(0, 0, 0, <span class="selector-class">.5</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Ubuntu: <code>sudo pip install supervisor</code></p>
+<p>（不建议使用 apt 安装）</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>安装完成后建立配置文件夹，按照惯例我们放到 <code>/etc/supervisor</code> 路径下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将默认设置导入路径</span></span><br><span class="line">sudo mkdir -p /etc/supervisor/conf.d</span><br><span class="line">sudo sh -c <span class="string">"echo_supervisord_conf &gt; /etc/supervisor/supervisord.conf"</span></span><br></pre></td></tr></table></figure>
 
-<p>那么我们修改 <code>$black-deep</code> 就可以了。</p>
-<p>这里你可以直接将 <code>$black-deep</code> 修改为你喜欢的颜色，譬如 <code>#fbbdd6</code>。但是我更建议你在 <code>base.styl</code> 文件中定义一个变量，如 <code>$theme-color = #fbbdd6</code>，再将<code>$black-deep</code> 修改为 <code>$theme-color</code>。</p>
-<p>定义一个变量的原因后期维护会更方便。另一个理由是，如果你仅仅在 <code>_brand.styl</code> 中修改，那么你会发现页面顶部的那根横线依然是原来的黑色。定位其代码，找到 <code>base.styl</code> 中 <code>$headband-bg = $black-deep;</code>，同样进行修改为 <code>$theme-color</code> 即可。</p>
-<h3 id="修改背景颜色"><a href="#修改背景颜色" class="headerlink" title="修改背景颜色"></a>修改背景颜色</h3><p>Pieces 默认背景颜色与纯白非常接近，是 <code>#f5f7f9</code>，我想修改为另外的颜色。利用搜索，很快定位到代码：<br><code>themes/next/source/css/_variables/Pisces.styl</code> 中，<code>$body-bg-color = #f5f7f9;</code>。<br>修改其值即可。</p>
+<p>下面编辑配置：<code>vim /etc/supervisor/supervisord.conf</code></p>
+<p>大部分配置都不需要改，直接将最后的一行改一下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[include]</span></span><br><span class="line"><span class="attr">files</span>=/etc/supervisor/conf.d/*.ini</span><br></pre></td></tr></table></figure>
+
+<p>对于想要交由 supervisor 托管的程序，在 <code>/etc/supervisor/conf.d</code> 路径下建立文件即可，如</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:webserver]</span></span><br><span class="line"><span class="attr">directory</span>=/path/to/webserver</span><br><span class="line"><span class="attr">command</span>=bash ./run.sh</span><br><span class="line"><span class="attr">autostart</span>=<span class="literal">true</span>     <span class="comment"># 是否随 supervisor 启动</span></span><br><span class="line"><span class="attr">autorestart</span>=<span class="literal">true</span>   <span class="comment"># 是否挂掉自动拉起</span></span><br><span class="line"><span class="attr">startsecs</span>=<span class="number">3</span>        <span class="comment"># 在此时间内退出会被认为失败</span></span><br><span class="line"><span class="attr">startretries</span>=<span class="number">3</span></span><br><span class="line"><span class="attr">user</span>=&lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后，启动 supervisor 的 server 端：</p>
+<p><code>sudo supervisord -c /etc/supervisor/supervisor.conf</code></p>
+<p>supervisor 提供了两种方式进行控制：</p>
+<ul>
+<li>命令行式，使用 <code>sudo supervisorctl</code> 进入交互模式，也可后跟 command，如：<br><code>sudo supervisorctl status/start/stop/reload/update</code></li>
+<li>Web UI，在坑的部分讲</li>
+</ul>
+<p>需要注意的是，<code>supervisor</code> 只支持非 daemon 的程序，也就是说假如你想托管本身就支持 daemon 模式的程序（如 docker），你需要去除运行时的 <code>-d</code> 参数。</p>
+<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><p>下面介绍一下 supervisor 的坑。</p>
+<p>它提供了一个 web UI，支持 unix socket 和 http 两种方式。开放之前，先修改一下用户名和密码（<code>*_http_server.username/password</code> 字段)。注意这里有个坑，要同步改一下下面的 <code>supervisorctl.username/password</code> 字段，否则每次 <code>supervisorctl</code> 都要输密码。<br>（吐槽：明文/裸hash 保存密码……）</p>
+<p>改完密码 nginx 直接配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line">    proxy_pass http://unix:/tmp/supervisor.sock;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置完一刷新，网关错误，一查log，发现自动建立的文件是 <code>root|root 700</code>的，nginx 没有 socket 的访问权限。进配置文件把权限改成 <code>777</code>，刷新，终于出来了界面。</p>
+<p>点一下界面的 refresh 按钮，发现请求被 301 重定向到 http 了……而且是在 header 里面写死了协议，完全忽略了我们传入的 <code>proto</code> 字段。这个问题我翻阅了其<a href="http://supervisord.org/" target="_blank" rel="noopener">文档</a>也没有找到解决方法，最后在 <a href="https://github.com/Supervisor/supervisor" target="_blank" rel="noopener">GitHub</a> 发现很多人也遇到这个问题，提出了很多 issue 和 PR，但是不知道为什么，开发者到现在也不愿意解决这个问题。</p>
+<p>最后的结果是，这个所谓的 web UI 实际上只能拿来看，并不能实际控制后台的程序……至少，不能安全地在 https 下使用。</p>
 
     </div>
 
@@ -309,25 +321,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
-            
-              <a href="/tags/css/" rel="tag"># css</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/22/一些Python的snippets/" rel="next" title="一些Python的snippets">
-                  <i class="fa fa-chevron-left"></i> 一些Python的snippets
+                <a href="/2019/09/04/asyncio-CancelledError终于是BaseException了/" rel="next" title="asyncio.CancelledError终于是BaseException了">
+                  <i class="fa fa-chevron-left"></i> asyncio.CancelledError终于是BaseException了
                 </a>
               
             </div>
@@ -335,10 +336,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/04/asyncio-CancelledError终于是BaseException了/" rel="prev" title="asyncio.CancelledError终于是BaseException了">
-                  asyncio.CancelledError终于是BaseException了 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -391,7 +388,7 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc">
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本信息"><span class="nav-number">1.</span> <span class="nav-text">版本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改站名部分的颜色"><span class="nav-number">2.</span> <span class="nav-text">修改站名部分的颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改背景颜色"><span class="nav-number">3.</span> <span class="nav-text">修改背景颜色</span></a></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#坑"><span class="nav-number">3.</span> <span class="nav-text">坑</span></a></li></ol></div>
           </div>
         
       </div>

@@ -195,6 +195,120 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.gwy15.com/2019/09/14/service的替代：Supervisor——配置和坑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gwy15">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="名字还没想好">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/14/service的替代：Supervisor——配置和坑/" class="post-title-link" itemprop="url">service的替代：Supervisor——配置和坑</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-14 21:32:40 / 修改时间：22:34:56" itemprop="dateCreated datePublished" datetime="2019-09-14T21:32:40+08:00">2019-09-14</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+            <span id="/2019/09/14/service的替代：Supervisor——配置和坑/" class="post-meta-item leancloud_visitors" data-flag-title="service的替代：Supervisor——配置和坑" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/14/service的替代：Supervisor——配置和坑/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/14/service的替代：Supervisor——配置和坑/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>对于一个想要长期在后台跑的服务，比如一个 web server，一般有这几种方法：</p>
+<ul>
+<li>使用 nohup + &amp;</li>
+<li>做成一个 service，使用 <code>sudo service &lt;servicename&gt; &lt;command&gt;</code> 控制</li>
+<li>自行实现 daemon</li>
+<li>利用 screen 软件，放到一个 screen 里面跑</li>
+</ul>
+<p>第一个方法实用性太差；第二个和第三个在能处理好日志时不错，但是其维护起来较为麻烦；最后一个方法是笔者以前常用的方法。</p>
+<p>supervisor 是用 python 编写的程序，其能够将非 daemon 程序放到后台运行并监控，还能做到检测到程序挂掉时重新拉起。它使用了 client/server 架构，因此提供了 web UI 以便远程控制（其实有坑）。</p>
+<p><img src="/images/2019/09/supervisor.png" alt="web UI"></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/14/service的替代：Supervisor——配置和坑/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.gwy15.com/2019/09/04/asyncio-CancelledError终于是BaseException了/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -589,7 +703,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
