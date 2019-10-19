@@ -82,6 +82,15 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+Plugins:
+- hexo-generator-baidu-sitemap
+- hexo-generator-sitemap
+
+baidusitemap:
+  path: baidusitemap.xml
+sitemap:
+  path: sitemap.xml
+
 # Anatole settings
 # Valine comments https://valine.js.org
 valine:
