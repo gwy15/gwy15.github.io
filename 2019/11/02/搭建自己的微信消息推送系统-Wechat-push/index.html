@@ -64,7 +64,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.gwy15.com/images/2019/11/wechat-push-demo.jpg">
 <meta property="og:image" content="https://blog.gwy15.com/images/2019/11/wechat-index.png">
-<meta property="og:updated_time" content="2019-11-02T06:27:53.652Z">
+<meta property="og:updated_time" content="2019-11-02T06:30:45.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建自己的微信消息推送系统 - Wechat-push">
 <meta name="twitter:description" content="服务器上跑的程序出错了想及时收到通知？对于这类业务报警/消息推送，一般的方法是使用邮件。但是邮箱配置起来较为麻烦，对于懒得配置邮箱或是嫌邮件送达率不高的程序员，微信看起来是一个更好的进行提醒推送的通道。 市面上已经有 Server 酱 或是 WxPusher 这类解决方案，利用微信服务号的模板消息进行消息推送。但很可惜，这两者都不开源。对于喜欢折腾的程序员，当然是选择轮子造起来~ 下面是博主搭建好">
@@ -234,7 +234,7 @@
                 
               
 
-              <time title="创建时间：2019-11-02 13:23:20 / 修改时间：14:27:53" itemprop="dateCreated datePublished" datetime="2019-11-02T13:23:20+08:00">2019-11-02</time>
+              <time title="创建时间：2019-11-02 13:23:20 / 修改时间：14:30:45" itemprop="dateCreated datePublished" datetime="2019-11-02T13:23:20+08:00">2019-11-02</time>
             </span>
           
             
@@ -282,6 +282,7 @@
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>遵循 RESTful 风格的代码，发送消息只需要一个请求：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST https://domain.com/message</span><br><span class="line">&#123;</span><br><span class="line">    receiver: openid,</span><br><span class="line">    title: title,</span><br><span class="line">    body: optional, markdown msg,</span><br><span class="line">    url: optional, url at end of the body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>获取自己的 openid，访问页面 <code>https://domain.com/</code> 并扫码即可。</p>
 <a id="more"></a>
 
 <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><ul>
