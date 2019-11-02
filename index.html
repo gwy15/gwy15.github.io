@@ -201,6 +201,116 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.gwy15.com/2019/11/02/搭建自己的微信消息推送系统-Wechat-push/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gwy15">
+      <meta itemprop="description" content="gwy15 的个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="名字还没想好">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/11/02/搭建自己的微信消息推送系统-Wechat-push/" class="post-title-link" itemprop="url">搭建自己的微信消息推送系统 - Wechat-push</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-02 13:23:20 / 修改时间：14:27:53" itemprop="dateCreated datePublished" datetime="2019-11-02T13:23:20+08:00">2019-11-02</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+            <span id="/2019/11/02/搭建自己的微信消息推送系统-Wechat-push/" class="post-meta-item leancloud_visitors" data-flag-title="搭建自己的微信消息推送系统 - Wechat-push" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/11/02/搭建自己的微信消息推送系统-Wechat-push/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/11/02/搭建自己的微信消息推送系统-Wechat-push/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>服务器上跑的程序出错了想及时收到通知？对于这类业务报警/消息推送，一般的方法是使用邮件。但是邮箱配置起来较为麻烦，对于懒得配置邮箱或是嫌邮件送达率不高的程序员，微信看起来是一个更好的进行提醒推送的通道。</p>
+<p>市面上已经有 <a href="http://sc.ftqq.com/3.version" target="_blank" rel="noopener">Server 酱</a> 或是 <a href="http://wxpusher.dingliqc.com/" target="_blank" rel="noopener">WxPusher</a> 这类解决方案，利用微信服务号的模板消息进行消息推送。但很可惜，这两者都不开源。对于喜欢折腾的程序员，当然是选择轮子造起来~</p>
+<p>下面是博主搭建好的结果示意和开源库地址：<br><a href="https://github.com/gwy15/wechat-push" target="_blank" rel="noopener">开源库 wechat-push</a></p>
+<p><img src="/images/2019/11/wechat-push-demo.jpg" alt="示意图"></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>遵循 RESTful 风格的代码，发送消息只需要一个请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST https://domain.com/message</span><br><span class="line">&#123;</span><br><span class="line">    receiver: openid,</span><br><span class="line">    title: title,</span><br><span class="line">    body: optional, markdown msg,</span><br><span class="line">    url: optional, url at end of the body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/11/02/搭建自己的微信消息推送系统-Wechat-push/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.gwy15.com/2019/10/14/Linux管理面板——cockpit-安装和配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -230,11 +340,19 @@
                 
               
 
-              <time title="创建时间：2019-10-14 15:21:14 / 修改时间：16:04:10" itemprop="dateCreated datePublished" datetime="2019-10-14T15:21:14+08:00">2019-10-14</time>
+              <time title="创建时间：2019-10-14 15:21:14" itemprop="dateCreated datePublished" datetime="2019-10-14T15:21:14+08:00">2019-10-14</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-19 16:17:01" itemprop="dateModified" datetime="2019-10-19T16:17:01+08:00">2019-10-19</time>
+              </span>
             
           
 
@@ -336,11 +454,19 @@
                 
               
 
-              <time title="创建时间：2019-09-14 21:32:40 / 修改时间：22:34:56" itemprop="dateCreated datePublished" datetime="2019-09-14T21:32:40+08:00">2019-09-14</time>
+              <time title="创建时间：2019-09-14 21:32:40" itemprop="dateCreated datePublished" datetime="2019-09-14T21:32:40+08:00">2019-09-14</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-19 16:17:01" itemprop="dateModified" datetime="2019-10-19T16:17:01+08:00">2019-10-19</time>
+              </span>
             
           
 
@@ -450,11 +576,19 @@
                 
               
 
-              <time title="创建时间：2019-09-04 10:44:27 / 修改时间：11:09:32" itemprop="dateCreated datePublished" datetime="2019-09-04T10:44:27+08:00">2019-09-04</time>
+              <time title="创建时间：2019-09-04 10:44:27" itemprop="dateCreated datePublished" datetime="2019-09-04T10:44:27+08:00">2019-09-04</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-19 16:17:01" itemprop="dateModified" datetime="2019-10-19T16:17:01+08:00">2019-10-19</time>
+              </span>
             
           
 
@@ -556,11 +690,19 @@
                 
               
 
-              <time title="创建时间：2019-08-25 11:55:00 / 修改时间：12:38:02" itemprop="dateCreated datePublished" datetime="2019-08-25T11:55:00+08:00">2019-08-25</time>
+              <time title="创建时间：2019-08-25 11:55:00" itemprop="dateCreated datePublished" datetime="2019-08-25T11:55:00+08:00">2019-08-25</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-19 16:17:01" itemprop="dateModified" datetime="2019-10-19T16:17:01+08:00">2019-10-19</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -686,7 +828,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-02 10:33:49" itemprop="dateModified" datetime="2019-09-02T10:33:49+08:00">2019-09-02</time>
+                <time title="修改时间：2019-10-19 16:17:01" itemprop="dateModified" datetime="2019-10-19T16:17:01+08:00">2019-10-19</time>
               </span>
             
           
@@ -815,7 +957,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
