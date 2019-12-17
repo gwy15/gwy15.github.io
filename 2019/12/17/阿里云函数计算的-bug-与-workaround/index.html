@@ -54,19 +54,19 @@
   };
 </script>
 
-  <meta name="description" content="Hexo 的 NexT 原来的主题是极简的黑白配色，一眼看上去还可以，但是看久了不免会有些视觉疲倦。如果想修改 hexo NexT 主题的配色应该怎么做呢？我在网上找到了一篇相关的文章。 这个文章中的修改方法的原理是修改.styl文件（Stylus语法）中的几个大的定义。按照这个方法虽然可以修改，但是会将其他部分的颜色也一起修改了，有没有更好的、更细粒度的方法呢？">
-<meta name="keywords" content="Hexo,css">
+  <meta name="description" content="去年写的阿里云函数计算是直接用 WSGI 接口撸的，最近引入 flask 框架重构了。但是重构并在本地测试通过后，放到云上遇到了问题。函数计算会对 url 中存在非 ascii 字符的情况报错。">
+<meta name="keywords" content="Python,web,阿里云,WSGI,http">
 <meta property="og:type" content="article">
-<meta property="og:title" content="修改Hexo NexT主题的配色">
-<meta property="og:url" content="https://blog.gwy15.com/2019/08/25/修改Hexo-NexT主题的配色/index.html">
+<meta property="og:title" content="阿里云函数计算的 bug 与 workaround">
+<meta property="og:url" content="https://blog.gwy15.com/2019/12/17/阿里云函数计算的-bug-与-workaround/index.html">
 <meta property="og:site_name" content="名字还没想好">
-<meta property="og:description" content="Hexo 的 NexT 原来的主题是极简的黑白配色，一眼看上去还可以，但是看久了不免会有些视觉疲倦。如果想修改 hexo NexT 主题的配色应该怎么做呢？我在网上找到了一篇相关的文章。 这个文章中的修改方法的原理是修改.styl文件（Stylus语法）中的几个大的定义。按照这个方法虽然可以修改，但是会将其他部分的颜色也一起修改了，有没有更好的、更细粒度的方法呢？">
+<meta property="og:description" content="去年写的阿里云函数计算是直接用 WSGI 接口撸的，最近引入 flask 框架重构了。但是重构并在本地测试通过后，放到云上遇到了问题。函数计算会对 url 中存在非 ascii 字符的情况报错。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-19T08:17:01.528Z">
+<meta property="og:updated_time" content="2019-12-17T06:52:29.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修改Hexo NexT主题的配色">
-<meta name="twitter:description" content="Hexo 的 NexT 原来的主题是极简的黑白配色，一眼看上去还可以，但是看久了不免会有些视觉疲倦。如果想修改 hexo NexT 主题的配色应该怎么做呢？我在网上找到了一篇相关的文章。 这个文章中的修改方法的原理是修改.styl文件（Stylus语法）中的几个大的定义。按照这个方法虽然可以修改，但是会将其他部分的颜色也一起修改了，有没有更好的、更细粒度的方法呢？">
-  <link rel="canonical" href="https://blog.gwy15.com/2019/08/25/修改Hexo-NexT主题的配色/">
+<meta name="twitter:title" content="阿里云函数计算的 bug 与 workaround">
+<meta name="twitter:description" content="去年写的阿里云函数计算是直接用 WSGI 接口撸的，最近引入 flask 框架重构了。但是重构并在本地测试通过后，放到云上遇到了问题。函数计算会对 url 中存在非 ascii 字符的情况报错。">
+  <link rel="canonical" href="https://blog.gwy15.com/2019/12/17/阿里云函数计算的-bug-与-workaround/">
 
 
 <script id="page-configurations">
@@ -80,7 +80,7 @@
   };
 </script>
 
-  <title>修改Hexo NexT主题的配色 | 名字还没想好</title>
+  <title>阿里云函数计算的 bug 与 workaround | 名字还没想好</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -203,7 +203,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.gwy15.com/2019/08/25/修改Hexo-NexT主题的配色/">
+    <link itemprop="mainEntityOfPage" href="https://blog.gwy15.com/2019/12/17/阿里云函数计算的-bug-与-workaround/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gwy15">
@@ -215,7 +215,7 @@
       <meta itemprop="name" content="名字还没想好">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">修改Hexo NexT主题的配色
+        <h1 class="post-title" itemprop="name headline">阿里云函数计算的 bug 与 workaround
 
           
         </h1>
@@ -231,19 +231,11 @@
                 
               
 
-              <time title="创建时间：2019-08-25 11:55:00" itemprop="dateCreated datePublished" datetime="2019-08-25T11:55:00+08:00">2019-08-25</time>
+              <time title="创建时间：2019-12-17 14:38:00 / 修改时间：14:52:29" itemprop="dateCreated datePublished" datetime="2019-12-17T14:38:00+08:00">2019-12-17</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-19 16:17:01" itemprop="dateModified" datetime="2019-10-19T16:17:01+08:00">2019-10-19</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -252,7 +244,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -261,7 +253,7 @@
           
 
           
-            <span id="/2019/08/25/修改Hexo-NexT主题的配色/" class="post-meta-item leancloud_visitors" data-flag-title="修改Hexo NexT主题的配色" title="阅读次数">
+            <span id="/2019/12/17/阿里云函数计算的-bug-与-workaround/" class="post-meta-item leancloud_visitors" data-flag-title="阿里云函数计算的 bug 与 workaround" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -279,7 +271,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/08/25/修改Hexo-NexT主题的配色/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/25/修改Hexo-NexT主题的配色/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/12/17/阿里云函数计算的-bug-与-workaround/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/12/17/阿里云函数计算的-bug-与-workaround/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -293,22 +285,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Hexo 的 NexT 原来的主题是极简的黑白配色，一眼看上去还可以，但是看久了不免会有些视觉疲倦。如果想修改 hexo NexT 主题的配色应该怎么做呢？我在网上找到了一篇<a href="https://i.zhouhuix.cn/2016/11/24/修改Hexo的Next主题/" target="_blank" rel="noopener">相关的文章</a>。</p>
-<p>这个文章中的修改方法的原理是修改<code>.styl</code>文件（Stylus语法）中的几个大的定义。按照这个方法虽然可以修改，但是会将其他部分的颜色也一起修改了，有没有更好的、更细粒度的方法呢？</p>
+        <p>去年写的阿里云函数计算是直接用 WSGI 接口撸的，最近引入 flask 框架重构了。但是重构并在本地测试通过后，放到云上遇到了问题。函数计算会对 url 中存在非 ascii 字符的情况报错。</p>
 <a id="more"></a>
 
-<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><p>Hexo 版本：3.9.0</p>
-<p>NexT 版本：7.3.0</p>
-<p>使用的 scheme: Pisces</p>
-<h3 id="修改站名部分的颜色"><a href="#修改站名部分的颜色" class="headerlink" title="修改站名部分的颜色"></a>修改站名部分的颜色</h3><p>站名部分就是那个大黑色方块，准确描述是 <code>div.site-meta</code>。显然其颜色经过计算之后是 <code>themes/next/source/css/_variables/base.styl</code> 文件中的 <code>$black-deep</code> 变量。但是直接修改该变量会使得下方的用户名也一起改变，因为其颜色也是定义的 <code>$black-deep</code> 变量，这不是我想要的效果。</p>
-<p>既然使用的是 <code>$black-deep</code> 变量，我们找到其传入的地方修改不就好了吗？</p>
-<p>在代码中查找 <code>$black-deep</code> 和 <code>.site-meta</code>，很快可以定位到相关定义，在 <code>themes/next/source/css/_schemes/Pieces/_brand.styl</code> 中，有对 <code>.site-meta</code> 的定义：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.site-meta</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: $black-deep;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  +tablet-mobile() &#123;</span><br><span class="line">    <span class="selector-tag">box-shadow</span>: 0 0 16<span class="selector-tag">px</span> <span class="selector-tag">rgba</span>(0, 0, 0, <span class="selector-class">.5</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="错误-demo"><a href="#错误-demo" class="headerlink" title="错误 demo"></a>错误 demo</h2><p>对于这样一个简单的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, jsonify</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/&lt;string:name&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">echo</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;<span class="string">'name'</span>: name&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handler</span><span class="params">(environ, start_response)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> app(environ, start_response)</span><br></pre></td></tr></table></figure>
 
-<p>那么我们修改 <code>$black-deep</code> 就可以了。</p>
-<p>这里你可以直接将 <code>$black-deep</code> 修改为你喜欢的颜色，譬如 <code>#fbbdd6</code>。但是我更建议你在 <code>base.styl</code> 文件中定义一个变量，如 <code>$theme-color = #fbbdd6</code>，再将<code>$black-deep</code> 修改为 <code>$theme-color</code>。</p>
-<p>定义一个变量的原因后期维护会更方便。另一个理由是，如果你仅仅在 <code>_brand.styl</code> 中修改，那么你会发现页面顶部的那根横线依然是原来的黑色。定位其代码，找到 <code>base.styl</code> 中 <code>$headband-bg = $black-deep;</code>，同样进行修改为 <code>$theme-color</code> 即可。</p>
-<h3 id="修改背景颜色"><a href="#修改背景颜色" class="headerlink" title="修改背景颜色"></a>修改背景颜色</h3><p>Pieces 默认背景颜色与纯白非常接近，是 <code>#f5f7f9</code>，我想修改为另外的颜色。利用搜索，很快定位到代码：<br><code>themes/next/source/css/_variables/Pisces.styl</code> 中，<code>$body-bg-color = #f5f7f9;</code>。<br>修改其值即可。</p>
+<p>在 python2 下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /test</span><br><span class="line">GET /测试</span><br></pre></td></tr></table></figure>
+
+<p>都可以通过，但是对于 python3 环境，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /test</span><br><span class="line">GET /测试</span><br></pre></td></tr></table></figure>
+
+<p>第二个却会抛出 <code>UnicodeDecodeError</code> 异常。</p>
+<h2 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h2><p>通过翻阅 WSGI 接口规范 <a href="https://www.python.org/dev/peps/pep-3333/" target="_blank" rel="noopener">pep-3333</a>，可以发现阿里云函数计算实现的 WSGI 接口不规范。先看看 pep-3333 怎么定义的字符串和编码问题：</p>
+<blockquote>
+<p>But in many Python versions and implementations, strings are Unicode, rather than bytes. This requires a careful balance between a usable API and correct translations between bytes and text in the context of HTTP… especially to support porting code between Python implementations with different <code>str</code> types.</p>
+<p>WSGI therefore defines two kinds of “string”:</p>
+<ul>
+<li>“Native” strings (which are always implemented using the type named <code>str</code>) that are used for request/response headers and metadata</li>
+<li>“Bytestrings” (which are implemented using the <code>bytes</code> type in Python 3, and <code>str</code> elsewhere), that are used for the bodies of requests and responses (e.g. POST/PUT input data and HTML page outputs).</li>
+</ul>
+<p>Do not be confused however: even if Python’s <code>str</code> type is actually Unicode “under the hood”, the <em>content</em> of native strings must still be translatable to bytes via the Latin-1 encoding! (See the section on <a href="https://www.python.org/dev/peps/pep-3333/#unicode-issues" target="_blank" rel="noopener">Unicode Issues</a> later in this document for more details.)</p>
+</blockquote>
+<p>可以看到，pep-3333 定义的 string 都是 <code>latin-1</code> 编码的 <code>str</code>，为了将其转换为 python3 中的字符串，werkzeug 库是这样实现的：</p>
+<blockquote>
+<p><code>return s.encode(&#39;latin-1&#39;).decode(&#39;utf8)</code></p>
+</blockquote>
+<p>而阿里云函数计算传入的是一个 unicode string，所以没法正确被 werkzeug 处理。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>知道了错误原理，我们就可以进行暂时的 workaround：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># aliyun FC workaround</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handler</span><span class="params">(environ, start_response)</span>:</span></span><br><span class="line">    environ[<span class="string">'PATH_INFO'</span>] = environ[<span class="string">'PATH_INFO'</span>].encode(<span class="string">'utf8'</span>).decode(<span class="string">'latin1'</span>)</span><br><span class="line">    <span class="keyword">return</span> app(environ, start_response)</span><br></pre></td></tr></table></figure>
+
+<p>我已经将这个 bug 通过工单系统提交给了阿里云，不知道他们愿不愿意修复。</p>
 
     </div>
 
@@ -324,9 +332,15 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
             
-              <a href="/tags/css/" rel="tag"># css</a>
+              <a href="/tags/web/" rel="tag"># web</a>
+            
+              <a href="/tags/阿里云/" rel="tag"># 阿里云</a>
+            
+              <a href="/tags/WSGI/" rel="tag"># WSGI</a>
+            
+              <a href="/tags/http/" rel="tag"># http</a>
             
           </div>
         
@@ -336,8 +350,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/22/一些Python的snippets/" rel="next" title="一些Python的snippets">
-                  <i class="fa fa-chevron-left"></i> 一些Python的snippets
+                <a href="/2019/11/02/搭建自己的微信消息推送系统-Wechat-push/" rel="next" title="搭建自己的微信消息推送系统 - Wechat-push">
+                  <i class="fa fa-chevron-left"></i> 搭建自己的微信消息推送系统 - Wechat-push
                 </a>
               
             </div>
@@ -345,10 +359,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/04/asyncio-CancelledError终于是BaseException了/" rel="prev" title="asyncio.CancelledError终于是BaseException了">
-                  asyncio.CancelledError终于是BaseException了 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -401,7 +411,7 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc">
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本信息"><span class="nav-number">1.</span> <span class="nav-text">版本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改站名部分的颜色"><span class="nav-number">2.</span> <span class="nav-text">修改站名部分的颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改背景颜色"><span class="nav-number">3.</span> <span class="nav-text">修改背景颜色</span></a></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误-demo"><span class="nav-number">1.</span> <span class="nav-text">错误 demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误原因"><span class="nav-number">2.</span> <span class="nav-text">错误原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">3.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
           </div>
         
       </div>
