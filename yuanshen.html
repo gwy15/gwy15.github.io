@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原神启动中</title>
+</head>
+
+<body>
+    <script>
+        function open_cloud() {
+            window.open('https://ys.mihoyo.com/cloud/#/', '_blank')
+        }
+
+        function open_native() {
+            // 如果是手机，直接跳
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            // iframe.src = 'yuanshengame://';
+            iframe.src = 'bilibili://'
+
+            document.body.appendChild(iframe);
+
+            // 根据是否成功加载 iframe 的内容来判断协议是否启动成功
+            if (iframe.contentWindow && iframe.contentWindow.location.href === 'about:blank') {
+                // 加载失败，移除 iframe 并返回 false
+                document.body.removeChild(iframe);
+                return false;
+            }
+            // 加载成功，返回 true
+            return true;
+        }
+        if (!open_native()) {
+            open_cloud()
+        }
+        window.close()
+    </script>
+</body>
+
+</html>
